@@ -9,25 +9,26 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O",
  "0", "1", "2", "3", "4", "5", "6", "7", "8", "9","~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}",
  "]",",","|",":",";","<",">",".","?","/"
 ];
+
 function generate(){
-  if(passOne.textContent.length < 15 && passOne.textContent.length < 15){
+  // replaced (passOne.textContent.length < 15 && passOne.textContent.length < 15) with the below
+  //                                                 👆
+  if(passOne.textContent.length < 15 && passTwo.textContent.length < 15){ 
     check()
   }
   alet.textContent = "Your passwords has been generated"
-  // aleut()
-  // console.log(passOne.textContent)
+  
 }
+
+// using the DRY(do not repeat yourself) principle i put the forloop in a function and called the function from the check function
+function runCheck( output ){
+  for (let i = 0; i < 15; i++) {
+    let num = Math.floor(Math.random() * characters.length);
+    output.textContent += characters[num]
+  }
+}
+
 function check(){
-  for (let i = 0; i < 15; i++) {
-    let num = Math.floor(Math.random() * characters.length);
-    passOne.textContent += characters[num]
-  }
-  for (let i = 0; i < 15; i++) {
-    let num = Math.floor(Math.random() * characters.length);
-    passTwo.textContent += characters[num]
-  }
+  runCheck(passOne)
+  runCheck(passTwo)
 }
-// function aleut(){
-//   setTimeout(
-//   alet.textContent = "Your passwords has been generated", 3000)
-// }
